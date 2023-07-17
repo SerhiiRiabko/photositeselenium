@@ -1,7 +1,7 @@
 from selenium.webdriver.support.wait import WebDriverWait
 
-from Selenium_for_site.page_objects.main_page import MainPage
-from Selenium_for_site.utilities.config_reader import ReadConfig
+from Photographers.page_object.main_page import MainPage
+from Photographers.utilities.config_reader import ReadConfig
 
 
 def test_page_email_wait(create_driver):
@@ -9,8 +9,8 @@ def test_page_email_wait(create_driver):
     WebDriverWait(driver, 10)
 
     actual_page = driver.title
-    assert actual_page == "Інтернет-магазин ROZETKA™: офіційний сайт найпопулярнішого онлайн-гіпермаркету в Україні", \
-        'Text of title is not as in requirements'
+    assert actual_page == "Фотографи, моделі, візажисти, стилісти, фотостудії та їх фото / photographers.ua", \
+        "Text is not correspond requirements"
 
 
 def test_login(create_driver):

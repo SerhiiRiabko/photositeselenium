@@ -1,8 +1,8 @@
 import pytest
 from selenium.webdriver import Chrome, ActionChains, Keys
 from selenium import webdriver
-from Selenium_for_site.utilities.config_reader import ReadConfig
-from Selenium_for_site.utilities.driver_factory import create_driver_factory
+from Photographers.utilities.config_reader import ReadConfig
+from Photographers.utilities.driver_factory import create_driver_factory
 
 
 @pytest.fixture()
