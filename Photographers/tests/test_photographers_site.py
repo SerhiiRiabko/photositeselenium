@@ -7,10 +7,8 @@ from Photographers.utilities.config_reader import ReadConfig
 def test_page_email_wait(create_driver):
     driver = create_driver
     WebDriverWait(driver, 10)
-
     actual_page = driver.title
-    assert actual_page == "Фотографи, моделі, візажисти, стилісти, фотостудії та їх фото / photographers.ua", \
-        "Text is not correspond requirements"
+    assert actual_page == 'Фотографи, моделі, візажисти, стилісти, фотостудії та їх фото / photographers.ua'
 
 
 def test_login(create_driver):
@@ -19,9 +17,4 @@ def test_login(create_driver):
     driver = create_driver
     main_page = MainPage(driver).click_login_link().fill_email(email).fill_pass(password).click_login_bt()\
         .click_profile_photo()
-    #main_page.click_login_link()
-    #main_page.fill_email(email)
-    #main_page.fill_pass(password)
-    #main_page.click_login_bt()
-    #main_page.click_profile_photo()
     assert main_page.profile_visible() == user_icon_link, "No profile"

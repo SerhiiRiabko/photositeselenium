@@ -62,5 +62,4 @@ class MainPage(BasePage):
     def click_profile_photo(self):
         profile_photo_bt = self._wait.until(EC.visibility_of_element_located(self.__profile_photo))
         profile_photo_bt.click()
-
-
+        return self
