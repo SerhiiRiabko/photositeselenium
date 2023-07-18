@@ -15,5 +15,13 @@ def test_page_email_wait(create_driver):
 
 def test_login(create_driver):
     email, password = ReadConfig.get_user_creds()
+    user_icon_link = ReadConfig.get_photo_link()
     driver = create_driver
-    main_page = MainPage(driver).click_user_icon().fill_email(email).fill_pass.click_login().click_burger_menu()
+    main_page = MainPage(driver).click_login_link().fill_email(email).fill_pass(password).click_login_bt()\
+        .click_profile_photo()
+    #main_page.click_login_link()
+    #main_page.fill_email(email)
+    #main_page.fill_pass(password)
+    #main_page.click_login_bt()
+    #main_page.click_profile_photo()
+    assert main_page.profile_visible() == user_icon_link, "No profile"

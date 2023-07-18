@@ -17,3 +17,7 @@ class ReadConfig:
     @staticmethod
     def get_browser_id():
         return config.get("browser_data", "browser_id")
+
+    @staticmethod
+    def get_photo_link():
+        return config.get("icon_link_data", "link_photo")
