@@ -22,4 +22,5 @@ class BasePage:
     def click(self, locator):
         self.__wait_until_element_clickable(locator).click()
 
-
+    def find_element(self, locator: tuple):
+        return self.__wait_until_element_visible(locator)

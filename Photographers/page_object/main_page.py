@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-
+from Photographers.page_object.registration_page import RegisterPage
 from Photographers.utilities.ui_utilities.base_page import BasePage
 
 
@@ -22,8 +22,7 @@ class MainPage(BasePage):
     __profile_photo = (By.XPATH, '//li/a[@class="dropdown-toggle"]/img')
 
     def click_login_link(self):
-        login_bt = self._wait.until(EC.visibility_of_element_located(self.__login))
-        login_bt.click()
+        self.click(self.__login)
         return self
 
     def fill_email(self, email_value):
@@ -51,15 +50,14 @@ class MainPage(BasePage):
         return self
 
     def profile_visible(self):
-        profile_data = self._wait.until(EC.visibility_of_element_located(self.__profile))
+        profile_data = self.find_element(self.__profile)
         actual_data_profile = profile_data.get_attribute("href")
         return actual_data_profile
 
     def click_registration_link(self):
-        registration_link = self._wait.until(EC.visibility_of_element_located(self.__registration))
-        registration_link.click()
+        self.click(self.__registration)
+        return RegisterPage(self._driver)
 
     def click_profile_photo(self):
-        profile_photo_bt = self._wait.until(EC.visibility_of_element_located(self.__profile_photo))
-        profile_photo_bt.click()
+        self.click(self.__profile_photo)
         return self
