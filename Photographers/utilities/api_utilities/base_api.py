@@ -1,0 +1,32 @@
+import json
+
+import requests
+
+
+
+class BaseAPI:
+    def __init__(self):
+        self.__base_url = 'https://restful-booker.herokuapp.com'
+        self.__headers = {'Accept': '*/*', 'Content-Type': 'application/json'}
+        self.__request = requests
+
+    def get(self, url, headers=None):
+        if headers is None:
+            headers = self.__headers
+        response = self.__request.get(f'{self.__base_url}{url}', headers=headers)
+        return response
+
+    def put(self):
+        pass
+
+    def post(self, url, body, headers=None):
+        if headers is None:
+            headers = self.__headers
+        response = self.__request.post(f'{self.__base_url}{url}', json=body, headers=headers)
+        return response
+
+    def patch(self):
+        pass
+
+    def delete(self):
+        pass
