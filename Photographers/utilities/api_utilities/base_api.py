@@ -2,8 +2,8 @@ import requests
 
 
 class BaseAPI:
-    def __init__(self):
-        self.__base_url = 'https://restful-booker.herokuapp.com'
+    def __init__(self, token, env):
+        self.__base_url = env.base_api
         self.__headers = {'Accept': '*/*', 'Content-Type': 'application/json'}
         self.__request = requests
 

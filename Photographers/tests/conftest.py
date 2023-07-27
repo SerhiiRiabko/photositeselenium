@@ -11,7 +11,7 @@ from Photographers.utilities.driver_factory import create_driver_factory
 
 
 @pytest.fixture(scope='session', autouse=True)
-def env(request):
+def env():
     with open('./../Configurations/env_1.json') as file:
         f_data = file.read()
     json_data = json.loads(f_data)
@@ -38,3 +38,7 @@ def update_mock_booking():
     mock_data2 = BookingAPI().get_booking_by_id(7)
     change_data = ChangeData(**mock_data2.json())
     return change_data
+
+@pytest.fixture()
+def generate_token():
+    pass
