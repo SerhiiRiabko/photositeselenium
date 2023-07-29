@@ -17,9 +17,6 @@ class BasePage:
     def __wait_until_element_visible(self, locator: tuple):
         return self._wait.until(EC.visibility_of_element_located(locator))
 
-    def __wait_until_element_invisible(self, locator: tuple):
-        return self._wait.until(EC.visibility_of_element_located(locator)) is False
-
     def __wait_until_element_clickable(self, locator: tuple):
         return self._wait.until(EC.element_to_be_clickable(locator))
 
@@ -36,7 +33,7 @@ class BasePage:
         return self.__wait_until_element_visible(locator)
 
     def no_element(self, locator: tuple):
-        return self.__wait_until_element_invisible(locator)
+        return self._wait.until(EC.invisibility_of_element_located(locator))
 
     def move_on_element(self, locator: tuple):
         element = self.__wait_until_element_visible(locator)

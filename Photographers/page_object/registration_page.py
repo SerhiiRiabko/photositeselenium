@@ -14,6 +14,10 @@ class RegisterPage(BasePage):
     __register_bt = (By.XPATH, '//input[@name="submit"]')
     __register_approve_msg = (By.XPATH, '//td/p[1]')  # No ability without index
     __error_message = (By.XPATH, '//div[@role="alert"]')
+    __register_by_google = (By.XPATH, '//div[@class="fr"]/a[@id="google_login"]')
+    __register_by_facebook = (By.XPATH, '//div[@class="fl"]/a[@id="facebook_login"]')
+    __why_register_block = (By.XPATH, '//h3[text()="Навіщо мені реєструватися?"]')
+    __activation_info = (By.XPATH, '//h3[text()="Активація акаунту"]')
 
     def fill_email(self, email_value):
         self.send_keys(self.__register_email_field, email_value)
@@ -39,3 +43,19 @@ class RegisterPage(BasePage):
     def inform_error_message(self):
         msg_element = self.find_element(self.__error_message)
         return msg_element
+
+    def login_by_google_visible(self):
+        self.find_element(self.__register_by_google)
+        return self
+
+    def login_by_facebook_visible(self):
+        self.find_element(self.__register_by_facebook)
+        return self
+
+    def why_register_block_visible(self):
+        self.find_element(self.__why_register_block)
+        return self
+
+    def activation_block_visible(self):
+        self.find_element(self.__activation_info)
+        return self

@@ -1,4 +1,6 @@
 from selenium.webdriver.common.by import By
+
+#from Photographers.page_object.about_the_project import AboutPage
 from Photographers.page_object.photo_of_the_day import PhotoOfTheDay
 from Photographers.page_object.registration_page import RegisterPage
 from Photographers.page_object.top_100_photo import Top100Photos
@@ -16,17 +18,18 @@ class MainPage(BasePage):
     __profile = (By.XPATH, '//a[@href="/SergeyRyabko/"]')
     __login = (By.XPATH, '//li/a[@id="btnShowLoginDialog"][@href="https://photographers.ua/user/login/"]')
     __registration = (By.XPATH, '//li/a[@class="register"]')
-    __switch_to_english = (By.XPATH, '//a[@href="https://photographers.ua/stuff/lang/en/"]')
+    __switch_to_english = (By.XPATH, '//li/a[@rel="nofollow"][text()="English"]')
     __top_100_photographers = (By.XPATH, '//a[text()="ТОП 100 фотографів"]')
     __top_100_photos = (By.XPATH, '//a[text()="ТОП 100 фотографій"]')
-    __photo_of_the_day = (By.XPATH, '//li/ul/li/a[@href="https://photographers.ua/ratings/picturesday/"]'
-                                    '[text()="Картина дня"]')
+    __photo_of_the_day = (By.XPATH, '//ul[@class="b-navigation"]/li/a[@href="https://photographers.ua/ratings/picturesday/"]')
     __email_input = (By.XPATH, '//input[@name="login"]')
     __password_input = (By.XPATH, '//input[@name="password"]')
     __login_in_form = (By.XPATH, '//button[@id="loginBtn"]')
     __profile_photo = (By.XPATH, '//li/a[@class="dropdown-toggle"]/img')
     __top_dropdown = (By.XPATH, '//a[@class="dropdown-toggle"][@href="https://photographers.ua/ratings/"]')
-
+    __about_project = (By.XPATH, '//td/ul[@class="b-navigation"]/li/a[text()="Про проект"]')
+    __24_hours = (By.XPATH, '//div/h2[@class="title"]')
+    __gallery_element = (By.XPATH, '//div[@class="nav"]/a')
     def click_login_link(self):
         self.click(self.__login)
         return self
@@ -45,6 +48,10 @@ class MainPage(BasePage):
 
     def click_eng_switch(self):
         self.click(self.__switch_to_english)
+        return self
+
+    def find_eng_switch(self):
+        self.find_element(self.__switch_to_english)
         return self
 
     def check_logo_visible(self):
@@ -79,3 +86,17 @@ class MainPage(BasePage):
     def click_photo_of_the_day(self):
         self.click(self.__photo_of_the_day)
         return PhotoOfTheDay(self._driver)
+
+    def click_about_project_link(self):
+        self.click(self.__about_project)
+        from Photographers.page_object.about_the_project import AboutPage
+        return AboutPage(self._driver)
+
+    def check_24_hours_title_visible(self):
+        self.find_element(self.__24_hours)
+        return self
+
+    def check_gallery_element_visible_text(self):
+        gallery_element = self.find_element(self.__gallery_element)
+        text_element = gallery_element.text
+        return text_element
