@@ -1,4 +1,5 @@
 from selenium.webdriver.support.wait import WebDriverWait
+import pytest
 
 from Photographers.page_object.main_page import MainPage
 from Photographers.utilities.config_reader import ReadConfig
@@ -166,3 +167,11 @@ def test_switch_to_eng(create_driver):
     driver = create_driver
     main_page = MainPage(driver).click_eng_switch()
     assert main_page.check_gallery_element_visible_text() == "Gallery", "Not English text at the site"
+
+
+def test_01():
+    assert 1 == 1
+
+
+def test_02():
+    assert 2 - 2 == 0

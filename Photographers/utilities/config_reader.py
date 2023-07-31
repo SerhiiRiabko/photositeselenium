@@ -1,10 +1,15 @@
 import configparser
+import os
 
 config = configparser.RawConfigParser()
 config.read('../Configurations/app_config.ini')
 
 
 class ReadConfig:
+
+    @staticmethod
+    def get_config_path():
+        return os.path.abspath('../Configurations/app_config.ini')
 
     @staticmethod
     def get_base_url():
@@ -17,6 +22,7 @@ class ReadConfig:
     @staticmethod
     def get_browser_id():
         return config.get("browser_data", "browser_id")
+
 
     @staticmethod
     def get_photo_link():
