@@ -1,11 +1,10 @@
 import json
-
 import pytest
 
 from Photographers.api_collections.booking_api import BookingAPI
 from Photographers.api_collections.data_classes.booking_data import Booking
 from Photographers.api_collections.data_classes.change_data import ChangeData
-from Photographers.utilities.config_obl import ConfigObject
+from Photographers.utilities.config_obj import ConfigObject
 from Photographers.utilities.config_reader import ReadConfig
 from Photographers.utilities.driver_factory import create_driver_factory
 
@@ -33,11 +32,13 @@ def create_mock_booking():
     booking = Booking(**mock_data.json())
     return booking
 
+
 @pytest.fixture()
 def update_mock_booking():
     mock_data2 = BookingAPI().get_booking_by_id(7)
     change_data = ChangeData(**mock_data2.json())
     return change_data
+
 
 @pytest.fixture()
 def generate_token():

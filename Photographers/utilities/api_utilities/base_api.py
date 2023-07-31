@@ -2,9 +2,10 @@ import requests
 
 
 class BaseAPI:
-    def __init__(self, token, env):
-        self.__base_url = env.base_api
-        self.__headers = {'Accept': '*/*', 'Content-Type': 'application/json'}
+    def __init__(self):
+        self.__base_url = 'https://restful-booker.herokuapp.com'
+        self.__headers = {'Accept': '*/*', 'Content-Type': 'application/json', 'Cookie': 'token=abc123',
+                          'Authorization': 'Basic YWRtaW46cGFzc3dvcmQxMjM='}
         self.__request = requests
 
     def get(self, url, headers=None):

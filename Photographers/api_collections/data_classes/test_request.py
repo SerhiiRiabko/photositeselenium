@@ -1,4 +1,5 @@
 import requests
+from Photographers.api_collections.data_classes.change_data import ChangeData
 
 url = 'https://restful-booker.herokuapp.com/booking/1'
 headers = {
@@ -7,17 +8,8 @@ headers = {
     'Authorization': 'token abc123'
 }
 
-response = requests.put(url, headers=headers, json={
-    "firstname": "James",
-    "lastname": "Brown",
-    "totalprice": 111,
-    "depositpaid": True,
-    "bookingdates": {
-        "checkin": "2018-01-01",
-        "checkout": "2019-01-01"
-    },
-    "additionalneeds": "Breakfast"
-})
+booking_data = ChangeData(firstname="James", lastname="Brown", totalprice=111, depositpaid=True,
+                          bookingdates={"checkin": "2018-01-01", "checkout": "2019-01-01"},
+                          additionalneeds="Breakfast")
 
-print(response.status_code)
-print(response.text)
+response = requests.put(url, headers=headers, json=booking_data.get_dict())
