@@ -2,7 +2,7 @@ import configparser
 import os
 
 config = configparser.RawConfigParser()
-config.read('../Configurations/app_config.ini')
+config.read(r'C:\Users\Serhii-Study\PycharmProjects\Photositeselenium\Photographers\Configurations\app_config.ini')
 
 
 class ReadConfig:
