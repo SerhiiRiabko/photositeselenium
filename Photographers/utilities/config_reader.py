@@ -17,3 +17,7 @@ class ReadConfig:
     @staticmethod
     def get_browser_id():
         return config.get("browser_data", "browser_id")
+
+    @staticmethod
+    def get_base_api():
+        return config.get("api_data", "base_api")
