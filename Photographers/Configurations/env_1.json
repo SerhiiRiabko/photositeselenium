@@ -1,3 +1,9 @@
 {
-  "base_api": "https://restful-booker.herokuapp.com"
+  "base_url": "https://photographers.ua",
+  "email": "adyvan2008@yandex.ru",
+  "password": "a1d8y1v2a1n987",
+  "browser_id": 1,
+  "link_photo": "https://photographers.ua/SergeyRyabko/",
+  "full_name": "Did Pihto"
+
 }

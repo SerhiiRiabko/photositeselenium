@@ -19,5 +19,10 @@ class ReadConfig:
         return config.get("browser_data", "browser_id")
 
     @staticmethod
-    def get_base_api():
-        return config.get("api_data", "base_api")
+    def get_photo_link():
+        return config.get("icon_link_data", "link_photo")
+
+    @staticmethod
+    def get_user_register_data():
+        return config.get('user_data2', 'email'), config.get('user_data2', 'password'), \
+            config.get('user_data2', 'full_name')
