@@ -5,7 +5,7 @@ from order_collection import OrdersCollection
 if __name__ == "__main__":
     host = "localhost"
     port = 5432
-    db_name = "serh_db"
+    db_name = "serhi_db"
 
     users_collection = UsersCollection(host, port, db_name)
     orders_collection = OrdersCollection(host, port, db_name)
